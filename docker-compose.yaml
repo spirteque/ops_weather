@@ -1,0 +1,8 @@
+services:
+  frontend-weather:
+    image: frontend-weather:v1
+    ports:
+      - 80:80
+  backend_weather:
+    image: backend-weather:v1
+

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-weather
+  namespace: weather
+  labels:
+    app: backend-weather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-weather
+  template:
+    metadata:
+      name: backend-weather
+      labels:
+        app: backend-weather
+    spec:
+      containers:
+        - name: backend-weather
+          image: backend-weather:v1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: OPEN_METEO_BASE_URL
+              value: "https://api.open-meteo.com"
+            - name: MIN_LATITUDE
+              value: "-90"
+            - name: MAX_LATITUDE
+              value: "90"
+            - name: MIN_LONGITUDE
+              value: "-180"
+            - name: MAX_LONGITUDE
+              value: "180"
+            - name: INSTALLATION_POWER_KW
+              value: "2.5"
+            - name: INSTALLATION_EFFICIENCY
+              value: "0.2"
+            - name: PRODUCTION
+              value: "1"
+      restartPolicy: Always
