@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-weather
+  name: weather-frontend
   namespace: weather
   labels:
-    app: frontend-weather
+    app: weather-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend-weather
+      app: weather-frontend
   template:
     metadata:
-      name: frontend-weather
+      name: weather-frontend
       labels:
-        app: frontend-weather
+        app: weather-frontend
     spec:
       containers:
-        - name: frontend-weather
-          image: frontend-weather:v1
+        - name: weather-frontend
+          image: localhost:32000/weather-frontend:v1
           imagePullPolicy: IfNotPresent
       restartPolicy: Always

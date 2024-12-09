@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-weather
+  name: weather-frontend
   namespace: weather
 spec:
   selector:
-    app: frontend-weather
+    app: weather-frontend
   ports:
     - port: 80
       targetPort: 80

@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-weather
+  name: weather-backend
   namespace: weather
   labels:
-    app: backend-weather
+    app: weather-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend-weather
+      app: weather-backend
   template:
     metadata:
-      name: backend-weather
+      name: weather-backend
       labels:
-        app: backend-weather
+        app: weather-backend
     spec:
       containers:
-        - name: backend-weather
-          image: backend-weather:v1
+        - name: weather-backend
+          image: localhost:32000/weather-backend:v1
           imagePullPolicy: IfNotPresent
           env:
             - name: OPEN_METEO_BASE_URL
